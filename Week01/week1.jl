@@ -108,14 +108,14 @@ println("Kurtosis versus Expected $(mean(kurts) - kurtosis(d))")
 # Test the kurtosis function for bias in small sample sizes
 d = Normal(0,1)
 sample_size = 10
-samples = 100
+samples = 1000
 kurts = Vector{Float64}(undef,samples)
 Threads.@threads for i in 1:samples
     kurts[i] = kurtosis(rand(d,sample_size))
 end
 
 #summary statistics
-describe(kurts)
+# describe(kurts)
 
 # t = mean(kurts)/sqrt(var(kurts)/samples)
 # p = 2*(1 - cdf(TDist(samples-1),abs(t)))
