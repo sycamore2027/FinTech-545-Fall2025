@@ -189,7 +189,7 @@ function optimize_risk(R)
     return Dict(:risk=>objective_value(m), :weights=>value.(w), :R=>R)
 end
 
-returns = [i for i in 0.03:.001:.05]
+returns = [i for i in 0.03:.0001:.05]
 optim_portfolios = DataFrame(optimize_risk.(returns))
 plot(sqrt.(optim_portfolios.risk), optim_portfolios.R, legend=:bottomright, label="Efficient Frontier", xlabel="Risk - SD", ylabel="Portfolio Expected Return")
 

@@ -9,7 +9,7 @@ using DataFrames
 using Plots
 
 function test(N,r)
-    1.0/(1.0+r/N)^N
+    return 1.0/(1.0+r/N)^N
 end
 
 test(10000,.01) ≈ exp(-.01)

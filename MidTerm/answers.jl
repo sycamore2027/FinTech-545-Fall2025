@@ -249,7 +249,7 @@ values = crossjoin(portfolio, DataFrame(:iteration=>iteration))
 nv = size(values,1)
 pnl = Vector{Float64}(undef,nv)
 simulatedValue = copy(pnl)
-for i in 1:nv
+Threads.@threads for i in 1:nv
     simulatedValue[i] = values.currentValue[i] * (1 + simRet[values.iteration[i],values.Stock[i]])
     pnl[i] = simulatedValue[i] - values.currentValue[i]
 end
